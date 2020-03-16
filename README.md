@@ -81,18 +81,31 @@
 #### FastQ input file:
 <p>Any standard fastq file coming from an Illumina MiSeq, HiSeq or NovaSeq should be able to run successfully in this setup</p>
 
+#### Getting and running the test data
+<p>First retrieve this git repo:</p>
+<p><code>git clone https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline.git</code></p>
+<p><code>cd COVID19-Amplicon-Sequencing-Analysis-Pipeline</code></p>
+<p></p>
+<p>The data is stored in a public S3 bucket, so data retrieval requires awscli, I recommend using a conda install</p>
+<p><code>conda install -c conda-forge awscli</code></p>
+<p>You'll need some data from your AWS account for this next command: AWS Key ID, secret access key, region: us-east-2.</p>
+<p><code>aws configure</code></p>
+<p>Run the following once you have your aws configure setup</p>
+<p><code>aws s3 sync s3://covid-19-amplicon-test-data .</code></p>
+<p>Jump to Run Nextflow Pipeline Command and run depending on your configuration</p>
+
 ## Run Nextflow Pipeline Command:
 
 #### Via the prebuilt Singularity Container
-<p><code>Singularity run /path/to/.sif nextflow run /path/to/AnalyzeMultiplexedSamples.nf --genome /path/to/COVID-19/genome --barcodes /path/to/sabre_barcode_file.txt --inputF /path/to/multiplexed.fastq</code></p>
+<p><code>Singularity run /path/to/COVID19_Analysis.sif nextflow run /path/to/AnalyzeMultiplexedSamples.nf --genome ./COVID-19/genome --barcodes ./COVID19_sample_barcode_file.txt --inputF ./COVID19_simulated_SE_reads.fastq</code></p>
 
 #### Without singularity, assuming all required programs are in the $PATH
-<p><code>nextflow run /path/to/AnalyzeMultiplexedSamples.nf --genome /path/to/COVID-19/genome --barcodes /path/to/sabre_barcode_file.txt --inputF /path/to/multiplexed.fastq</code></p>
+<p><code>nextflow run /path/to/AnalyzeMultiplexedSamples.nf --genome ./COVID-19/genome --barcodes ./COVID19_sample_barcode_file.txt --inputF ./COVID19_simulated_SE_reads.fastq</code></p>
 
 ## Patient Data Outputs:
 
 ## Performance:
-<p>On a prebuilt dataset with 25 million reads spread across 6 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of 0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
+<p>On a prebuilt dataset with 25 million reads spread across 6 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of $0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
 
 ##### Simulating COVID-19 amplicon sequencing
 
