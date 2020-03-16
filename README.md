@@ -117,10 +117,13 @@
 ## Performance:
 <p>On a prebuilt dataset with 25 million reads spread across 6 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of $0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
 
+## How was the test data built:
 ##### Simulating COVID-19 amplicon sequencing
 
-I used <a href="https://www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm"> ART</a> to simulate 4.166 Million reads of 150 bp in length using Miseq V3 error profiles over 6 COVID amplicons using the below commands.
+<p>I used <a href="https://www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm"> ART</a> to simulate 4.166 Million reads of 150 bp in length using Miseq V3 error profiles over 6 randomly chosen COVID amplicons using the below commands.</p>
 
 ##### Commands for ART data simulation
 
-art_illumina -ss MSv3 --samout -amp -na -i ./amplicons-0-5.fa -l 150 --fcov 4166666 -o single_ended_COVID_amplicon --rndSeed 127
+<p><code>art_illumina -ss MSv3 --samout -amp -na -i ./amplicons-0-5.fa -l 150 --fcov 4166666 -o single_ended_COVID_amplicon --rndSeed 127</code><p>
+
+<p>I then barcoded each read using a custom script and a key file I had from previous GBS analysis. Those barcoded reads are found in our test data and can be effectively demultiplexed by sabre.</p>
