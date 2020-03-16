@@ -36,7 +36,7 @@
 </ul>
 
 #### Pipeline Minimal Software Requirements for running on AWS cloud resources:
-<p><bold>Nothing</bold>.</p> 
+<p><strong>Nothing</strong></p>
 <p>Simply use the publicly available image AMI ID: ami-0681e8be831a1a855. AMI Name: COVID19 Targeted Sequencing Analysis Pipeline. It contains singularity and the singularity image file COVID19_Analysis.sif. Get your fastq data into the instance with the sabre key and run using the: 'Via the prebuilt Singularity Container' command below.</p>
 
 
@@ -44,7 +44,7 @@
 <ul>
 <li><a href="https://sylabs.io/docs/">Singularity</a> (version:3.5.3) and the prebuilt COVID19_Analysis.sif container</li>
 </ul>
-<p>To get the public prebuilt singularity container (COVID19_Analysis.sif) <bold>execute the below command on a machine with AWScli</bold></p>
+<p>To get the public prebuilt singularity container (COVID19_Analysis.sif) <strong>execute the below command on a machine with AWScli</strong></p>
 <p>aws s3 cp s3://covid19-amplicon-analysis-singularity-image/COVID19_Analysis.sif ~ </p>
 
 
