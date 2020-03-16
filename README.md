@@ -69,6 +69,9 @@
 
 <p><strong>If you plan to install everything instead of using the singularity instance I recommend using <a href="https://docs.conda.io/en/latest/">conda</a> environments as below</strong></p>
 
+<p>First retrieve this git repo:</p>
+<p><code>git clone https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline.git</code></p> 
+<p><code>cd COVID19-Amplicon-Sequencing-Analysis-Pipeline</code></p>
 <p>Once conda is functional run the following command:</p>
 <p><code>sh ./condaEnv/create_env.sh</code></p>
 <p></p>
