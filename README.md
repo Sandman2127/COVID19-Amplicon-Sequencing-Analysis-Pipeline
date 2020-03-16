@@ -60,10 +60,10 @@
 ### 3) Pipeline Minimal Software Requirements to build and run from a conda environment:
 <p>Install the following functional programs in your path</p>
 <ul>
-<li><a href="https://www.nextflow.io">Nextflow</a> version:20.01.0.5264</li>
-<li><a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">Bowtie2</a> version:>=2.3.5.1</li>
-<li><a href="http://www.htslib.org">Samtools</a> version:1.9</li>
-<li><a href="https://github.com/najoshi/sabre">Sabre Demultiplexer</a> version:1.0</li>
+<li><a href="https://www.nextflow.io">Nextflow</a> version: 20.01.0.5264</li>
+<li><a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">Bowtie2</a> version: 2.3.5.1</li>
+<li><a href="http://www.htslib.org">Samtools</a> version: 1.9</li>
+<li><a href="https://github.com/najoshi/sabre">Sabre Demultiplexer</a> version: 1.0</li>
 <li><a href="https://www.python.org/downloads/">Python</a> version: 3.7.6 with packages: pandas(v1.0.2), matplotlib (v3.1.3), numpy (v1.18.1), argparse (included with python dist) </li>
 </ul>
 
@@ -78,13 +78,12 @@
 <p>To test functionality type:</p>  
 <p><code>bowtie2 --help</code></p> 
 
-
 # Running Amplicon Sequencing Analysis:
 
 #### Sabre barcode file:
 <p>Should be a tab delimited text file with the barcode in the first column and the sampleName.fq (.fq is required after sample name):</p>
-<p>CTCTCCAG \t RED_CLOUD_001.fq</p>
-<p>TAATTG \t RED_CLOUD_002.fq</p>
+<p>CTCTCCAG <\t> RED_CLOUD_001.fq</p>
+<p>TAATTG <\t> RED_CLOUD_002.fq</p>
 <p>...</p>
 <p></p>
 
