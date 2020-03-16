@@ -33,7 +33,3 @@ process alignBowtie2 {
     # index alignments
     """
 }
-process plotHitsxSample {
-
-
-}
