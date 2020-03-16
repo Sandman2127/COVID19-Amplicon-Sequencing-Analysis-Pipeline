@@ -1,11 +1,11 @@
 # General
-<p>I wrote this pipeline in early March 2020 as a response to the pandemic outbreak of the novel coronavirus known as COVID-19. The inabilty to test citizens at the rate required to stop or even slow the spread of this virus was alarming and my idea to improve testing speed is simple. Use what we already have...</p>
+<p>This pipeline was written in response to the pandemic outbreak of the novel coronavirus known as COVID-19. The inabilty to test citizens at the rate required to stop or even slow the spread of this virus is alarming and my idea to improve testing speed is simple. Use amplicon sequencing and combine it with liquid handling robots to massively parallelize sample processing...</p>
 
 #### Basic COVID-19 testing facts:
-<p>Currently testing can be done via a variety of methods including immunofluorescence microscopy, RT-PCR followed by standard PCR and gel electrophoresis, Western blots for viral protein and CT scans of infected lung tissue. From a molecular diagnostic prespective the RT-PCR method is the most accurate and quick to perform. COVID-19 is an RNA virus, and as such its detection requires reverse transcription of the RNA into DNA before PCR or subsequent sequencing.</p> 
+<p>Currently COVID-19 testing can be done via a variety of molecular methods including: immunofluorescence microscopy, RT-PCR followed by standard PCR and gel electrophoresis, western blots for viral protein and CT scans of infected lung tissue. From a molecular diagnostic prespective the RT-PCR method is the most accurate and quick to perform. COVID-19 is an RNA virus, and as such its detection requires reverse transcription of the RNA into DNA before PCR or subsequent sequencing.</p>
 
-#### My plan:
-<p>I designed this pipeline to take the RT-PCR method one step further and perform sequencing of the viral cDNA. I realized that using even the least capable next generation sequencer available (like an Illumina MiSeq, 15Gb w/25x10^6 reads) could drastically increase testing capacity. To do this we need to perform parallelized sequencing of multiple viral cDNAs in many patients simultaneously.</p>
+#### Background ideas:
+<p>This pipeline was designed to take the RT-PCR method a step further and analyze sequencing data of the viral cDNA. I realized that using even the least capable next generation sequencer available (like an Illumina MiSeq, 15Gb w/25x10^6 reads) could not only drastically increase testing capacity for simple +/- diagnosis, but we may be also be able to learn about the COVID-19 virus as it spreads and evolves by sequencing, instead of just performing electorphoresis. To do this we need to perform parallelized sequencing of multiple viral cDNAs in many patients simultaneously.</p>
 <p>This pipeline will:</p>
 <ul>
 <li> Automatically demultiplex patient amplicon sequencing data </li>
@@ -42,7 +42,7 @@
 <li>Run in the cloud with an <a href="https://aws.amazon.com/free/?trk=ps_a131L0000085EJuQAM&trkCampaign=acq_paid_search_brand&sc_channel=ps&sc_campaign=acquisition_US&sc_publisher=google&sc_category=core-main&sc_country=US&sc_geo=NAMER&sc_outcome=acq&sc_detail=amazon%20web%20services&sc_content=Brand_amazon_web_services_e&sc_segment=423740514695&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|AWS|Core|US|EN|Text&s_kwcid=AL!4422!3!423740514695!e!!g!!amazon%20web%20services&ef_id=Cj0KCQjwx7zzBRCcARIsABPRscODB5HYuzBwvlVnnA5ob9O5LMgOlsdQer9H-vadHQlijFuRmHFPYXUaAtysEALw_wcB:G:s&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc">Amazon Web Services</a> image</li>
 <li>Run using <a href="https://sylabs.io/docs/">Singularity</a> container environments</li>
 <li>Run after building the included <a href="https://docs.conda.io/en/latest/">conda</a> environment ./condaEnv/COVID19_Analysis_conda_environment.yml</li>
-</ol> 
+</ol>
 
 ### 1) Pipeline Minimal Software Requirements for running on AWS cloud resources:
 <p>                            *****<strong>Nothing</strong>*****                                   </p>
@@ -70,7 +70,7 @@
 <p><strong>If you plan to install everything instead of using the singularity instance I recommend using <a href="https://docs.conda.io/en/latest/">conda</a> environments as below</strong></p>
 
 <p>Once conda is functional run the following command:</p>
-<p><code>conda env create -f /path/to/condaEnv/COVID19_Analysis_conda_environment.yml </code></p>
+<p><code>sh ./condaEnv/create_env.sh</code></p>
 <p></p>
 <p>This will create the conda environment COVID19-Amplicon-Seq. To activate it type:</p>
 <p><code>source activate COVID19-Amplicon-Seq </code></p> 
