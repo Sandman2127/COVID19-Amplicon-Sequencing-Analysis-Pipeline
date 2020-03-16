@@ -81,7 +81,7 @@
 #### FastQ input file:
 <p>Any standard fastq file coming from an Illumina MiSeq, HiSeq or NovaSeq should be able to run successfully in this setup</p>
 
-#### Getting and running the test data
+## Getting and running the test data
 <p>First retrieve this git repo:</p>
 <p><code>git clone https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline.git</code></p>
 <p><code>cd COVID19-Amplicon-Sequencing-Analysis-Pipeline</code></p>
