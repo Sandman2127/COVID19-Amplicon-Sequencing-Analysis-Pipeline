@@ -53,8 +53,8 @@
 <ul>
 <li><a href="https://sylabs.io/docs/">Singularity</a> (version:3.5.3) and the prebuilt COVID19_Analysis.sif container</li>
 </ul>
-<p>To get the public prebuilt singularity container (COVID19_Analysis.sif) <strong>execute the below command on a machine with AWScli</strong></p>
-<p><code>aws s3 cp s3://covid19-amplicon-analysis-singularity-image/COVID19_Analysis.sif ~ </code></p>
+<p>To get the public prebuilt singularity container (COVID19_Analysis.sif) execute the below wget command:</p>
+<p><code>wget https://covid19-amplicon-analysis-singularity-image.s3.us-east-2.amazonaws.com/COVID19_Analysis.sif</code></p>
 
 
 ### 3) Pipeline Minimal Software Requirements to build and run from a conda environment:
@@ -95,13 +95,10 @@
 <p>First retrieve this git repo:</p>
 <p><code>git clone https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline.git</code></p>
 <p><code>cd COVID19-Amplicon-Sequencing-Analysis-Pipeline</code></p>
-<p></p>
-<p>The data is stored in a public S3 bucket, so data retrieval requires awscli, I recommend using a conda install</p>
-<p><code>conda install -c conda-forge awscli</code></p>
-<p>You'll need some data from your AWS account for this next command: AWS Key ID, secret access key, region: us-east-2.</p>
-<p><code>aws configure</code></p>
-<p>Run the following once you have your aws configure setup</p>
-<p><code>aws s3 sync s3://covid-19-amplicon-test-data .</code></p>
+<p>to get the fastq test data:</p>
+<p><code>wget https://covid-19-amplicon-test-data.s3.us-east-2.amazonaws.com/COVID19_simulated_SE_reads.fastq</code></p>
+<p>to get the barcode data:</p>
+<p><code>wget https://covid-19-amplicon-test-data.s3.us-east-2.amazonaws.com/COVID19_sample_barcode_file.txt</code></p>
 <p>Jump to Run Nextflow Pipeline Command and run depending on your configuration</p>
 
 ## Run Nextflow Pipeline Command:
