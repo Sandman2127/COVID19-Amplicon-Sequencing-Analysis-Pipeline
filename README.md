@@ -55,9 +55,19 @@
 <li><a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">Bowtie2</a> version:>=2.3.5.1</li>
 <li><a href="http://www.htslib.org">Samtools</a> version:1.9</li>
 <li><a href="https://github.com/najoshi/sabre">Sabre Demultiplexer</a> version:1.0</li>
-<li><a href="https://www.python.org/downloads/">Python</a>version: 3.7.6 with packages: pandas(v1.0.2), matplotlib (v3.1.3), numpy (v1.18.1), argparse (included with python dist) </li>
+<li><a href="https://www.python.org/downloads/">Python</a> version: 3.7.6 with packages: pandas(v1.0.2), matplotlib (v3.1.3), numpy (v1.18.1), argparse (included with python dist) </li>
 </ul>
+
 <p>If you plan to install everything instead of using the singularity instance I recommend using <a href="https://docs.conda.io/en/latest/">conda</a> environments</p>
+
+<p>Once conda is functional run the following command:</p>
+<p>conda env create -f /path/to/condaEnv/COVID19_Analysis_conda_environment.yml</p>
+<p></p>
+<p>This will create the conda environment COVID19-Amplicon-Seq. To activate it type:</p>
+<p>source activate COVID19-Amplicon-Seq.</p> 
+<p></p>
+<p>To test functionality type:</p>  
+<p>bowtie2 --help</p> 
 
 
 ## Running Amplicon Sequencing Analysis:
