@@ -35,7 +35,12 @@
 <li>RAM: >= 8 Gb </li>
 </ul>
 
-#### Pipeline Minimal Software Requirements w/Singularity:
+#### Pipeline Minimal Software Requirements for running on AWS cloud resources:
+<p><bold>Nothing</bold>.</p> 
+<p>Simply use the publicly available image AMI ID: ami-0681e8be831a1a855. AMI Name: COVID19 Targeted Sequencing Analysis Pipeline. It contains singularity and the singularity image file COVID19_Analysis.sif. Get your fastq data into the instance with the sabre key and run using the: 'Via the prebuilt Singularity Container' command below.</p>
+
+
+#### Pipeline Minimal Software Requirements for running locally w/Singularity:
 <ul>
 <li><a href="https://sylabs.io/docs/">Singularity</a> (version:3.5.3) and the prebuilt COVID19_Analysis.sif container</li>
 </ul>
