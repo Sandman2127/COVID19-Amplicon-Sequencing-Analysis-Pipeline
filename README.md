@@ -2,7 +2,7 @@
 <p>I wrote this pipeline in early March 2020 as a response to the pandemic outbreak of the novel coronavirus known as COVID-19. The inabilty to test citizens at the rate required to stop or even slow the spread of this virus was alarming and my idea to improve testing speed is simple. Use what we already have...</p>
 
 #### Basic COVID-19 testing facts:
-<p>Currently testing can be done via a variety of methods including immunofluorescence microscopy, RT-PCR followed by standard PCR and gel electrophoresis, Western blots for viral protein and CT scans of infected lung tissue. From a molecular diagnostic prespective the RT-PCR method is the most accurate and quick to perform. COVID-19 is an RNA virus, and as such its detection requires reverse transcription of the RNA into DNA before sequencing.</p> 
+<p>Currently testing can be done via a variety of methods including immunofluorescence microscopy, RT-PCR followed by standard PCR and gel electrophoresis, Western blots for viral protein and CT scans of infected lung tissue. From a molecular diagnostic prespective the RT-PCR method is the most accurate and quick to perform. COVID-19 is an RNA virus, and as such its detection requires reverse transcription of the RNA into DNA before PCR or subsequent sequencing.</p> 
 
 #### My plan:
 <p>I designed this pipeline to take the RT-PCR method one step further and perform sequencing of the viral cDNA. I realized that using even the least capable next generation sequencer available (like an Illumina MiSeq, 15Gb w/25x10^6 reads) could drastically increase testing capacity. To do this we need to perform parallelized sequencing of multiple viral cDNAs in many patients simultaneously.</p>
