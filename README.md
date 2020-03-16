@@ -25,22 +25,22 @@
 <li>Fast</li>
 </ol>
 
-#### Reproducible & Scalable Analysis:
+### Reproducible & Scalable Analysis:
 <p>The relatively simple operations of this pipeline are written in the <a href="https://www.nextflow.io">nextflow</a> pipeline development software to be run in a pre-built singularity container which is also freely available <a>here</a>. To further facilitate analysis in areas without strong computational infrastructure I've developed a publicly available AWS image (AMI ID: ami-0681e8be831a1a855, AMI Name: COVID19 Targeted Sequencing Analysis Pipeline) which already has the necessary software to run the analysis built into the included singularity container.</p>
 
 
-#### Pipeline Minimal Compute Requirements:
+### Pipeline Minimal Compute Requirements:
 <ul>
 <li>CPU architecture: >= 2 </li>
 <li>RAM: >= 8 Gb </li>
 </ul>
 
-#### Pipeline Minimal Software Requirements for running on AWS cloud resources:
+### Pipeline Minimal Software Requirements for running on AWS cloud resources:
 <p>                            *****<strong>Nothing</strong>*****                                   </p>
 <p>Simply use the publicly available <a href="https://aws.amazon.com/free/?trk=ps_a131L0000085EJuQAM&trkCampaign=acq_paid_search_brand&sc_channel=ps&sc_campaign=acquisition_US&sc_publisher=google&sc_category=core-main&sc_country=US&sc_geo=NAMER&sc_outcome=acq&sc_detail=amazon%20web%20services&sc_content=Brand_amazon_web_services_e&sc_segment=423740514695&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|AWS|Core|US|EN|Text&s_kwcid=AL!4422!3!423740514695!e!!g!!amazon%20web%20services&ef_id=Cj0KCQjwx7zzBRCcARIsABPRscODB5HYuzBwvlVnnA5ob9O5LMgOlsdQer9H-vadHQlijFuRmHFPYXUaAtysEALw_wcB:G:s&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc">Amazon Web Services</a> image AMI ID: ami-0681e8be831a1a855 with the AMI Name: COVID19 Targeted Sequencing Analysis Pipeline. It contains singularity and the singularity image file COVID19_Analysis.sif. Get your fastq data into the instance with the sabre compatible key (described below) and run using the: 'Via the prebuilt Singularity Container' command below.</p>
 
 
-#### Pipeline Minimal Software Requirements for running locally w/Singularity:
+### Pipeline Minimal Software Requirements for running locally w/Singularity:
 <ul>
 <li><a href="https://sylabs.io/docs/">Singularity</a> (version:3.5.3) and the prebuilt COVID19_Analysis.sif container</li>
 </ul>
@@ -48,7 +48,7 @@
 <p><code>aws s3 cp s3://covid19-amplicon-analysis-singularity-image/COVID19_Analysis.sif ~ </code></p>
 
 
-#### Pipeline Minimal Software Requirements without singularity image file:
+### Pipeline Minimal Software Requirements without singularity image file:
 <p>Install the following functional programs in your path</p>
 <ul>
 <li><a href="https://www.nextflow.io">Nextflow</a> version:20.01.0.5264</li>
