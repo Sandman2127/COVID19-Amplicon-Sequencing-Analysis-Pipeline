@@ -26,7 +26,7 @@
 </ol>
 
 #### Reproducible & Scalable Analysis:
-<p>The relatively simple operations of this pipeline are written in the <a href="https://www.nextflow.io">nextflow</a> pipeline development software to be run in a pre-built singularity container which is also freely available <a>here</a>. To further facilitate analysis in areas without strong computational infrastructure I've developed a publicly available AWS image AMI ID: ami-0681e8be831a1a855 AMI Name: COVID19 Targeted Sequencing Analysis Pipeline which already has the necessary software to run the anlaysis built into the included singularity container.</p>
+<p>The relatively simple operations of this pipeline are written in the <a href="https://www.nextflow.io">nextflow</a> pipeline development software to be run in a pre-built singularity container which is also freely available <a>here</a>. To further facilitate analysis in areas without strong computational infrastructure I've developed a publicly available AWS image (AMI ID: ami-0681e8be831a1a855, AMI Name: COVID19 Targeted Sequencing Analysis Pipeline) which already has the necessary software to run the analysis built into the included singularity container.</p>
 
 
 #### Pipeline Minimal Compute Requirements:
