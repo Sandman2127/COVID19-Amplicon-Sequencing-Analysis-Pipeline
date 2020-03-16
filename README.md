@@ -75,9 +75,9 @@
 # Running Amplicon Sequencing Analysis:
 
 #### Sabre barcode file:
-<p>Should be a tab delimited text file as below:</p>
-<p>CTCTCCAG RED_CLOUD_001.fq</p>
-<p>TAATTG   RED_CLOUD_002.fq</p>
+<p>Should be a tab delimited text file with the barcode in the first column and the sampleName.fq (.fq is required after sample name):</p>
+<p>CTCTCCAG \t RED_CLOUD_001.fq</p>
+<p>TAATTG \t RED_CLOUD_002.fq</p>
 <p>...</p>
 <p></p>
 
