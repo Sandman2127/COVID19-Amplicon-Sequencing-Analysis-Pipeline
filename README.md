@@ -37,12 +37,19 @@
 
 # Installation:
 
-### Pipeline Minimal Software Requirements for running on AWS cloud resources:
+<p>This pipeline is written using multiple layers of abstraction to provide high reproduciblity and portability. A user can choose from the following options to configure and run this pipeline: 
+<ol>
+<li>Run in the cloud with an <a href="https://aws.amazon.com/free/?trk=ps_a131L0000085EJuQAM&trkCampaign=acq_paid_search_brand&sc_channel=ps&sc_campaign=acquisition_US&sc_publisher=google&sc_category=core-main&sc_country=US&sc_geo=NAMER&sc_outcome=acq&sc_detail=amazon%20web%20services&sc_content=Brand_amazon_web_services_e&sc_segment=423740514695&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|AWS|Core|US|EN|Text&s_kwcid=AL!4422!3!423740514695!e!!g!!amazon%20web%20services&ef_id=Cj0KCQjwx7zzBRCcARIsABPRscODB5HYuzBwvlVnnA5ob9O5LMgOlsdQer9H-vadHQlijFuRmHFPYXUaAtysEALw_wcB:G:s&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc">Amazon Web Services</a> image</li>
+<li>Run using <a href="https://sylabs.io/docs/">Singularity</a> container environments</li>
+<li>Run after building the included <a href="https://docs.conda.io/en/latest/">conda</a> environment ./condaEnv/COVID19_Analysis_conda_environment.yml</li>
+</ol> 
+
+### 1) Pipeline Minimal Software Requirements for running on AWS cloud resources:
 <p>                            *****<strong>Nothing</strong>*****                                   </p>
 <p>Simply use the publicly available <a href="https://aws.amazon.com/free/?trk=ps_a131L0000085EJuQAM&trkCampaign=acq_paid_search_brand&sc_channel=ps&sc_campaign=acquisition_US&sc_publisher=google&sc_category=core-main&sc_country=US&sc_geo=NAMER&sc_outcome=acq&sc_detail=amazon%20web%20services&sc_content=Brand_amazon_web_services_e&sc_segment=423740514695&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|AWS|Core|US|EN|Text&s_kwcid=AL!4422!3!423740514695!e!!g!!amazon%20web%20services&ef_id=Cj0KCQjwx7zzBRCcARIsABPRscODB5HYuzBwvlVnnA5ob9O5LMgOlsdQer9H-vadHQlijFuRmHFPYXUaAtysEALw_wcB:G:s&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc">Amazon Web Services</a> image AMI ID: ami-0681e8be831a1a855 with the AMI Name: COVID19 Targeted Sequencing Analysis Pipeline. It contains singularity and the singularity image file COVID19_Analysis.sif. Get your fastq data into the instance with the sabre compatible key (described below) and run using the: 'Via the prebuilt Singularity Container' command below.</p>
 
 
-### Pipeline Minimal Software Requirements for running locally w/Singularity:
+### 2) Pipeline Minimal Software Requirements for running locally with a Singularity container:
 <ul>
 <li><a href="https://sylabs.io/docs/">Singularity</a> (version:3.5.3) and the prebuilt COVID19_Analysis.sif container</li>
 </ul>
@@ -50,7 +57,7 @@
 <p><code>aws s3 cp s3://covid19-amplicon-analysis-singularity-image/COVID19_Analysis.sif ~ </code></p>
 
 
-### Pipeline Minimal Software Requirements without singularity image file:
+### 3) Pipeline Minimal Software Requirements to build and run from a conda environment:
 <p>Install the following functional programs in your path</p>
 <ul>
 <li><a href="https://www.nextflow.io">Nextflow</a> version:20.01.0.5264</li>
