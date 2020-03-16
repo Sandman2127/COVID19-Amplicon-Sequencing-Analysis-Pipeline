@@ -17,10 +17,6 @@
 #### Assumptions about sample throughput to feed into the analysis pipeline:
 <p> I envision an automated process using liquid handling robots to extract viral RNA from thousands of patient samples, perform RT-PCR on them, amplify the viral amplicon targets (now cDNA) with PCR, build libraries and sequence.</p>
 
-
-#### In order for this analysis pipeline to benefit everyone it needs to have the following charecteristics:
-
-
 #### Goals of this pipeline:
 <ol>
 <li>Reproducible</li>
@@ -29,21 +25,26 @@
 <li>Fast</li>
 </ol>
 
-##### Reproducible & Scalable Analysis:
+#### Reproducible & Scalable Analysis:
 <p>The relatively simple operations of this pipeline are written in the <a href="https://www.nextflow.io">nextflow</a> pipeline development software to be run in a pre-built singularity container which is also freely available <a>here</a>. To further facilitate analysis in areas without strong computational infrastructure I've developed a publicly available AWS image AMI ID: ami-0681e8be831a1a855 AMI Name: COVID19 Targeted Sequencing Analysis Pipeline which already has the necessary software to run the anlaysis built into the included singularity container.</p>
 
 
-##### Pipeline Minimal Compute Requirements:
+#### Pipeline Minimal Compute Requirements:
 <ul>
 <li>CPU architecture: >= 2 </li>
 <li>RAM: >= 8 Gb </li>
 </ul>
 
-##### Pipeline Minimal Software Requirements:
+#### Pipeline Minimal Software Requirements w/Singularity:
 <ul>
-<li><a href="https://sylabs.io/docs/">Singularity</a> (version:3.5.3) and the prebuilt <a href="">COVID19_Analysis.sif container</a></li>
+<li><a href="https://sylabs.io/docs/">Singularity</a> (version:3.5.3) and the prebuilt COVID19_Analysis.sif container</li>
 </ul>
-<p><strong>Or the following functional programs in your path</strong></p>
+<p>To get the public prebuilt singularity container (COVID19_Analysis.sif) <bold>execute the below command on a machine with AWScli</bold></p>
+<p>aws s3 cp s3://covid19-amplicon-analysis-singularity-image/COVID19_Analysis.sif ~ </p>
+
+
+#### Pipeline Minimal Software Requirements without singularity image file:
+<p>Install the following functional programs in your path</p>
 <ul>
 <li><a href="https://www.nextflow.io">Nextflow</a> version:20.01.0.5264</li>
 <li><a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">Bowtie2</a> version:>=2.3.5.1</li>
@@ -55,26 +56,28 @@
 
 
 ## Running Amplicon Sequencing Analysis:
-##### Sabre barcode file:
+#### Sabre barcode file:
 <p>Should be a tab delimited text file as below:</p>
 <p>CTCTCCAG RED_CLOUD_001.fq</p>
 <p>TAATTG   RED_CLOUD_002.fq</p>
 <p>...</p>
 <p></p>
 
-##### FastQ input file
+#### FastQ input file:
 <p>Any standard fastq file coming from an Illumina MiSeq, HiSeq or NovaSeq should be able to run successfully in this setup</p>
 
-## Run Nextflow Pipeline Command
+## Run Nextflow Pipeline Command:
 
-##### Via the prebuilt Singularity Container
+#### Via the prebuilt Singularity Container
 <p>Singularity run /path/to/.sif nextflow run /path/to/AnalyzeMultiplexedSamples.nf --genome /path/to/COVID-19/genome --barcodes /path/to/sabre_barcode_file.txt --inputF /path/to/multiplexed.fastq </p>
 
-##### Without singularity, assuming all required programs are in the $PATH
+#### Without singularity, assuming all required programs are in the $PATH
 <p>nextflow run /path/to/AnalyzeMultiplexedSamples.nf --genome /path/to/COVID-19/genome --barcodes /path/to/sabre_barcode_file.txt --inputF /path/to/multiplexed.fastq</p>
 
-## Patient Data Outputs
+## Patient Data Outputs:
 
+## Performance:
+<p>On a prebuilt dataset with 25 million reads spread across 6 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of 0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
 
 ##### Simulating COVID-19 amplicon sequencing
 
