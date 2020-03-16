@@ -36,8 +36,8 @@
 </ul>
 
 #### Pipeline Minimal Software Requirements for running on AWS cloud resources:
-<p><strong>Nothing</strong></p>
-<p>Simply use the publicly available image AMI ID: ami-0681e8be831a1a855. AMI Name: COVID19 Targeted Sequencing Analysis Pipeline. It contains singularity and the singularity image file COVID19_Analysis.sif. Get your fastq data into the instance with the sabre key and run using the: 'Via the prebuilt Singularity Container' command below.</p>
+<p>                            *****<strong>Nothing</strong>*****                                   </p>
+<p>Simply use the publicly available image AMI ID: ami-0681e8be831a1a855 with the AMI Name: COVID19 Targeted Sequencing Analysis Pipeline. It contains singularity and the singularity image file COVID19_Analysis.sif. Get your fastq data into the instance with the sabre compatible key (described below) and run using the: 'Via the prebuilt Singularity Container' command below.</p>
 
 
 #### Pipeline Minimal Software Requirements for running locally w/Singularity:
