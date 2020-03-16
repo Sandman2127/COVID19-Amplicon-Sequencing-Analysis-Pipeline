@@ -17,7 +17,7 @@
 #### Assumptions about sample throughput to feed into the analysis pipeline:
 <p> I envision an automated process using liquid handling robots to extract viral RNA from thousands of patient samples, perform RT-PCR on them, amplify the viral amplicon targets (now cDNA) with PCR, build libraries and sequence.</p>
 
-#### Goals of this pipeline:
+### Goals of this pipeline:
 <ol>
 <li>Reproducible</li>
 <li>Scalable </li>
@@ -34,6 +34,8 @@
 <li>CPU architecture: >= 2 </li>
 <li>RAM: >= 8 Gb </li>
 </ul>
+
+# Installation:
 
 ### Pipeline Minimal Software Requirements for running on AWS cloud resources:
 <p>                            *****<strong>Nothing</strong>*****                                   </p>
@@ -70,7 +72,8 @@
 <p><code>bowtie2 --help</code></p> 
 
 
-## Running Amplicon Sequencing Analysis:
+# Running Amplicon Sequencing Analysis:
+
 #### Sabre barcode file:
 <p>Should be a tab delimited text file as below:</p>
 <p>CTCTCCAG RED_CLOUD_001.fq</p>
