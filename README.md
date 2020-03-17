@@ -114,10 +114,12 @@
 ## Patient Data Outputs:
 
 <p><em><strong>Read alignment by contig and bowtie2 mapping quality score (MAQ)</strong></em></p>
-<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_Pos.png"/>
-<p>The mapping quality of reads by contig can tell us how accurately our amplified viral sequences are matching the COVID-19 genome. High numbers of mapping reads on multiple amplicons indicates a positive diagnosis for COVID-19, low mapping at almost all will indicate a negative result (i.e. no COVID-19 detected). This simulated data maps very highly to the genome, <strong>in real life</strong> we will need to empirically determine the false positive alignment rate of each primer set. However, assuming we can generate high specificity primers for multiple viral genome sites, we can likely drastically improve the sensitivity of COVID-19 detection.</p>
-<p><em><strong>Histogram showing starting position of the mapping reads by contig</strong></em></p>
 <img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_readMAQ.png"/>
+<p>The mapping quality of reads by contig can tell us how accurately our amplified viral sequences are matching the COVID-19 genome. High numbers of mapping reads on multiple amplicons indicates a positive diagnosis for COVID-19, low mapping at almost all will indicate a negative result (i.e. no COVID-19 detected). This simulated data maps very highly to the genome, <strong>in real life</strong> we will need to empirically determine the false positive alignment rate of each primer set. However, assuming we can generate high specificity primers for multiple viral genome sites, we can likely drastically improve the sensitivity of COVID-19 detection.</p>
+<p></p>
+<p></p>
+<p><em><strong>Histogram showing starting position of the mapping reads by contig</strong></em></p>
+<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_Pos.png"/>
 <p>Theoretically in an amplicon sequencing experiment one should see a tight distribution, idealy a single large peak of read start mapping positions. This plot immediately tells the reviewer what site in the viral genome the reads are mapping to, and how many. With background knowledge of the primer anealing sites and expected read depth a knowledgable reviewer would instantly know if the alignments indicate a positive or negative COVID-19 result.</p>
 
 
