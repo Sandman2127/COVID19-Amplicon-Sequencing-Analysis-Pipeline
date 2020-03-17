@@ -137,5 +137,5 @@
 
 
 
-[fig1]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "MAPQ score aligned reads by contig"
-[fig2]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Start Pos Histogram"
+[fig1]: https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_Pos.png "MAPQ score aligned reads by contig"
+[fig2]: https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_readMAQ.png "Start Pos Histogram"
