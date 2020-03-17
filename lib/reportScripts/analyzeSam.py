@@ -33,10 +33,14 @@ def plotBarByAmplicon():
     merged = pd.merge(MQgt0, MQgt10, on='RNAME').merge(MQgt20,on='RNAME').merge(MQgt30,on='RNAME').merge(MQgt40,on='RNAME')
     merged.columns = ['MAQ>=0','MAQ>=10','MAQ>=20','MAQ>=30','MAQ>=40']
     merged.plot.bar()
+    plt.legend(loc='lower left', labelspacing=0.5, bbox_to_anchor= (1.04, 0.5), borderaxespad=0, frameon=False)
+    plt.tick_params(axis='x', which='major', labelsize=8)
+    plt.ylabel("Reads Aligned @ Map Quality Score")
+    #plt.tight_layout()
     output_PNG = PATH + "/" + basename + "_Amplicon_Barplot.png"
     output_EPS = PATH + "/" + basename + "_Amplicon_Barplot.eps"
-    plt.savefig(output_PNG,format="png", dpi=600)
-    plt.savefig(output_EPS,format="eps", dpi=600)
+    plt.savefig(output_PNG,format="png",figsize=(12,8),bbox_inches='tight', dpi=600)
+    plt.savefig(output_EPS,format="eps",figsize=(12,8),bbox_inches='tight',dpi=600)
 
 def plotHistByAmpliconPos():
     #Group by each contig an amplicon aligns to
