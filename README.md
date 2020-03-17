@@ -113,7 +113,7 @@
 
 ## Patient Data Outputs:
 
-<p><em><strong>Read alignment by contig and bowtie2 mapping quality score (MAQ)<strong></em></p>
+<p><em><strong>Read alignment by contig and bowtie2 mapping quality score (MAQ)</strong></em></p>
 ![alt text][fig1]
 <p>The mapping quality of reads by contig can tell us how accurately our amplified viral sequences are matching the COVID-19 genome. High numbers of mapping reads on multiple amplicons indicates a positive diagnosis for COVID-19, low mapping at almost all will indicate a negative result (i.e. no COVID-19 detected). This simulated data maps very highly to the genome, <strong>in real life</strong> we will need to empirically determine the false positive alignment rate of each primer set. However, assuming we can generate high specificity primers for multiple viral genome sites, we can likely drastically improve the sensitivity of COVID-19 detection.</p>
 <p><em><strong>Histogram showing starting position of the mapping reads by contig</strong></em></p>
