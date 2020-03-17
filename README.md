@@ -113,15 +113,18 @@
 
 ## Patient Data Outputs:
 
-#### <em>Read alignment by contig and bowtie2 mapping quality score (MAQ)</em>
+### Read alignment by contig and bowtie2 mapping quality score (MAQ)
 <img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_readMAQ.png"/>
-<p>The mapping quality of reads by contig can tell us how accurately our amplified viral sequences are matching the COVID-19 genome. High numbers of mapping reads on multiple amplicons indicates a positive diagnosis for COVID-19, low mapping at almost all will indicate a negative result (i.e. no COVID-19 detected). This simulated data maps very highly to the genome, <strong>in real life</strong> we will need to empirically determine the false positive alignment rate of each primer set. However, assuming we can generate high specificity primers for multiple viral genome sites, we can likely drastically improve the sensitivity of COVID-19 detection.</p>
+<p>The mapping quality of reads by contig can tell us how accurately our amplified viral sequences are matching the COVID-19 genome. The highest achievable MAQ in bowtie2 is 42. High numbers of mapping reads on multiple amplicons indicates a positive diagnosis for COVID-19, whereas low mapping at almost all will indicate a negative result (i.e. no COVID-19 detected). My simulated data maps almost perfectly to the viral genome. <strong>In real life</strong> we will need to empirically determine the false positive alignment rate of each primer set. However, assuming we can generate high specificity primers for multiple viral genome sites, we can likely drastically improve the sensitivity of COVID-19 detection.</p>
 <p></p>
 <p></p>
 
-#### <em>Histogram showing starting position of mapping reads by contig</em>
+### Histogram showing starting position of mapping reads by contig
 <img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_Pos.png"/>
 <p>Theoretically in an amplicon sequencing experiment one should see a tight distribution. Ideally a single large peak of read start mapping positions. This plot immediately tells the reviewer what site in the viral genome the reads are mapping to, and how many. With background knowledge of the expected primer anealing sites, expected read depth and false positive rate a knowledgable reviewer would instantly know if the alignments indicate a positive or negative COVID-19 result.</p>
+
+### Conclusions
+<p>Since I started with 25x10^6 simulated reads split across 5 amplicons in 96 separate samples we expect the following: (25x10^6/5)/96) == 52,631 reads per sample. Clearly the data above indicate perfect alignment of all reads in the sample. This will not be the case in real world samples, but I am confident we can determine a false positive rate for each real world COVID-19 primer set. If a sample has reads above this false positive rate at multiple loci we would consider a sample positive for COVID-19
 
 ## Performance:
 <p>On a prebuilt dataset with 25 million reads spread across 5 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of $0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
@@ -133,7 +136,7 @@
 
 ##### Commands for ART data simulation
 
-<p><code>art_illumina -ss MSv3 --samout -amp -na -i ./amplicons-0-5.fa -l 150 --fcov 4166666 -o single_ended_COVID_amplicon --rndSeed 127</code><p>
+<p><code>art_illumina -ss MSv3 --samout -amp -na -i ./amplicons.fa -l 150 --fcov 5000000 -o single_ended_COVID_amplicon --rndSeed 127</code><p>
 
 <p>I then barcoded each read using a custom script and a key file I had from previous GBS analysis. Those barcoded reads are found in our test data and can be effectively demultiplexed by sabre.</p>
 
