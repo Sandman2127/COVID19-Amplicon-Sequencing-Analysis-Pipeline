@@ -24,23 +24,44 @@ SAMDF = pd.read_csv(SAMF,sep='\s+',index_col=False,skiprows=13,names=['QNAME','F
 subSelectDF = SAMDF.loc[:,'QNAME':'TLEN']
 
 
-def plotByAmplicon():
+def plotBarByAmplicon():
     MQgt40 = subSelectDF[subSelectDF.MAPQ >= 40 ].groupby('RNAME').count().loc[:,'MAPQ']
     MQgt30 = subSelectDF[subSelectDF.MAPQ >= 30 ].groupby('RNAME').count().loc[:,'MAPQ']
     MQgt20 = subSelectDF[subSelectDF.MAPQ >= 20 ].groupby('RNAME').count().loc[:,'MAPQ']
     MQgt10 = subSelectDF[subSelectDF.MAPQ >= 10 ].groupby('RNAME').count().loc[:,'MAPQ']
-    merged = pd.merge(MQgt10, MQgt20, on='RNAME').merge(MQgt30,on='RNAME').merge(MQgt40,on='RNAME')
-    merged.columns = ['MAQ>10','MAQ>20','MAQ>30','MAQ>40']
+    MQgt0 = subSelectDF.groupby('RNAME').count().loc[:,'MAPQ']
+    merged = pd.merge(MQgt0, MQgt10, on='RNAME').merge(MQgt20,on='RNAME').merge(MQgt30,on='RNAME').merge(MQgt40,on='RNAME')
+    merged.columns = ['MAQ>=0','MAQ>=10','MAQ>=20','MAQ>=30','MAQ>=40']
     merged.plot.bar()
     output_PNG = PATH + "/" + basename + "_Amplicon_Barplot.png"
     output_EPS = PATH + "/" + basename + "_Amplicon_Barplot.eps"
     plt.savefig(output_PNG,format="png", dpi=600)
     plt.savefig(output_EPS,format="eps", dpi=600)
 
+def plotHistByAmpliconPos():
+    #Group by each contig an amplicon aligns to
+    groupByRNAME = subSelectDF.groupby('RNAME')
+    lengthGBR=len(groupByRNAME)
+    #plot figure
+    fig, axs = plt.subplots(lengthGBR,sharex=False,constrained_layout=True,figsize=(8.5,12))
+    fig.suptitle('Amplicon read alignment by contig and start position', fontsize=16)
+    for num in range(0,lengthGBR):
+        name =list(groupByRNAME)[num][0]
+        df =list(groupByRNAME)[num][1]
+        axs[num].hist(df.loc[:,'POS'])
+        xlab = "Alignment position on contig: " + str(name)
+        axs[num].set(xlabel=xlab,ylabel="Total Reads")
+    output_PNG = PATH + "/" + basename + "_Amplicon_Pos_Hist.png"
+    output_EPS = PATH + "/" + basename + "_Amplicon_Pos_Hist.eps"
+    fig.savefig(output_PNG,format="png", dpi=600)
+    fig.savefig(output_EPS,format="eps", dpi=600)
+
 
 def main():
-    print("Plotting Alignment to all chromosomes x MAPQ")
-    plotByAmplicon()
+    print("Plotting alignment to all chromosomes x MAPQ")
+    plotBarByAmplicon()
+    print("Plotting alignment start position for all reads on each chromosome")
+    plotHistByAmpliconPos()
 
 
 if __name__ == "__main__":
