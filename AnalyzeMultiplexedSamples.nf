@@ -37,13 +37,15 @@ process alignBowtie2 {
     file "${demux_fq}.sam" into aligned_sam_sequences
 
     """
-    # very senstive end to end alignment with 1 possible mismatch in the seed into a samtools view for only high quality alignments, followed by sorting and indexing
-    bowtie2 --threads 4 --very-sensitive -N 1 -x $genome $demux_fq | samtools view -bh -q 5 - | samtools sort -@ 2 - > ${demux_fq}.bam ;
+    # Very senstive end to end alignment with 1 possible mismatch in the seed into a samtools view to bam, followed by sorting and indexing
+    # The alignment --very-sensitive tends to be so stringent that only extremely high value alignments MAQ==42 occur. 
+    # Plotting of these values occurs in plotSamOutput
+    bowtie2 --threads 4 --very-sensitive -N 1 -x $genome $demux_fq | samtools view -bh - | samtools sort -@ 2 - > ${demux_fq}.bam ;
 
-    # index alignments
+    # Index alignments
     samtools index -@ 4 ${demux_fq}.bam ;
 
-    # generate sam file for plotting analysis
+    # Generate sam file for plotting analysis
     samtools view -h ${demux_fq}.bam > ${demux_fq}.sam
     """
 }
