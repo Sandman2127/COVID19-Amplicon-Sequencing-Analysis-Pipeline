@@ -114,7 +114,7 @@
 ## Patient Data Outputs:
 
 ## Performance:
-<p>On a prebuilt dataset with 25 million reads spread across 6 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of $0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
+<p>On a prebuilt dataset with 25 million reads spread across 5 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of $0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
 
 ## How was the test data built:
 ##### Simulating COVID-19 amplicon sequencing
