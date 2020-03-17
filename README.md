@@ -113,6 +113,14 @@
 
 ## Patient Data Outputs:
 
+<p><em><strong>Read alignment by contig and bowtie2 mapping quality score (MAQ)<strong></em></p>
+![alt text][fig1]
+<p>The mapping quality of reads by contig can tell us how accurately our amplified viral sequences are matching the COVID-19 genome. High numbers of mapping reads on multiple amplicons indicates a positive diagnosis for COVID-19, low mapping at almost all will indicate a negative result (i.e. no COVID-19 detected). This simulated data maps very highly to the genome, <strong>in real life</strong> we will need to empirically determine the false positive alignment rate of each primer set. However, assuming we can generate high specificity primers for multiple viral genome sites, we can likely drastically improve the sensitivity of COVID-19 detection.</p>
+<p><em><strong>Histogram showing starting position of the mapping reads by contig</strong></em></p>
+![alt text][fig2]
+<p>Theoretically in an amplicon sequencing experiment one should see a tight distribution, idealy a single large peak of read start mapping positions. This plot immediately tells the reviewer what site in the viral genome the reads are mapping to, and how many. With background knowledge of the primer anealing sites and expected read depth a knowledgable reviewer would instantly know if the alignments indicate a positive or negative COVID-19 result.</p>
+
+
 ## Performance:
 <p>On a prebuilt dataset with 25 million reads spread across 5 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of $0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
 
@@ -126,3 +134,8 @@
 <p><code>art_illumina -ss MSv3 --samout -amp -na -i ./amplicons-0-5.fa -l 150 --fcov 4166666 -o single_ended_COVID_amplicon --rndSeed 127</code><p>
 
 <p>I then barcoded each read using a custom script and a key file I had from previous GBS analysis. Those barcoded reads are found in our test data and can be effectively demultiplexed by sabre.</p>
+
+
+
+[fig1]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "MAPQ score aligned reads by contig"
+[fig2]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Start Pos Histogram"
