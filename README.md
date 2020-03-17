@@ -119,7 +119,7 @@
 ## How was the test data built:
 ##### Simulating COVID-19 amplicon sequencing
 
-<p>I used <a href="https://www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm"> ART</a> to simulate 4.166 Million reads of 150 bp in length using Miseq V3 error profiles over 6 randomly chosen COVID amplicons using the below commands.</p>
+<p>I used <a href="https://www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm"> ART</a> to simulate 4.166 Million reads of 150 bp in length using Miseq V3 error profiles over 5 randomly chosen COVID amplicons using the below commands.</p>
 
 ##### Commands for ART data simulation
 
