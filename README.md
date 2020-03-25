@@ -44,7 +44,7 @@ I realized that using even the least capable next generation sequencer available
 <ol>
 <li>Run in the cloud with an <a href="https://aws.amazon.com/free/?trk=ps_a131L0000085EJuQAM&trkCampaign=acq_paid_search_brand&sc_channel=ps&sc_campaign=acquisition_US&sc_publisher=google&sc_category=core-main&sc_country=US&sc_geo=NAMER&sc_outcome=acq&sc_detail=amazon%20web%20services&sc_content=Brand_amazon_web_services_e&sc_segment=423740514695&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|AWS|Core|US|EN|Text&s_kwcid=AL!4422!3!423740514695!e!!g!!amazon%20web%20services&ef_id=Cj0KCQjwx7zzBRCcARIsABPRscODB5HYuzBwvlVnnA5ob9O5LMgOlsdQer9H-vadHQlijFuRmHFPYXUaAtysEALw_wcB:G:s&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc">Amazon Web Services</a> image</li>
 <li>Run using <a href="https://sylabs.io/docs/">Singularity</a> container environments</li>
-<li>Run after building the included <a href="https://docs.conda.io/en/latest/">conda</a> environment ./condaEnv/COVID19_Analysis_conda_environment.yml</li>
+<li>Run after building the included <a href="https://docs.conda.io/en/latest/">conda</a> environment ./condaEnv/create_env.sh</li>
 </ol>
 
 ### 1) Pipeline Minimal Software Requirements for running on AWS cloud resources:
