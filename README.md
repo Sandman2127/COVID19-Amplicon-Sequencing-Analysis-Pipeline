@@ -117,17 +117,7 @@ I realized that using even the least capable next generation sequencer available
 ## Patient Data Outputs:
 
 ### Example Report Output:
-
-
-### Read alignment by contig and bowtie2 mapping quality score (MAQ)
-<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_readMAQ.png"/>
-<p>The mapping quality of reads by contig can tell us how accurately our amplified viral sequences are matching the COVID-19 genome. The highest achievable MAQ in bowtie2 is 42. High numbers of mapping reads on multiple amplicons indicates a positive diagnosis for COVID-19, whereas low mapping at almost all will indicate a negative result (i.e. no COVID-19 detected). My simulated data maps almost perfectly to the viral genome. <strong>In real life</strong> we will need to empirically determine the false positive alignment rate of each primer set. However, assuming we can generate high specificity primers for multiple viral genome sites, we can likely drastically improve the sensitivity of COVID-19 detection.</p>
-<p></p>
-<p></p>
-
-### Histogram showing starting position of mapping reads by contig
-<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_Pos.png"/>
-<p>Theoretically in an amplicon sequencing experiment one should see a tight distribution. Ideally a single large peak of read start mapping positions. This plot immediately tells the reviewer what site in the viral genome the reads are mapping to, and how many. With background knowledge of the expected primer anealing sites, expected read depth and false positive rate a knowledgable reviewer would instantly know if the alignments indicate a positive or negative COVID-19 result.</p>
+https://sandman2127.github.io/COVID19-Amplicon-Sequencing-Analysis-Pipeline/
 
 ### Conclusions
 <p>Since I started with 25x10^6 simulated reads split across 5 amplicons in 96 separate samples we expect the following: (25x10^6/5)/96) == 52,631 reads per sample. Clearly the data above indicate perfect alignment of all reads in the sample. This will not be the case in real world samples, but I am confident we can determine a false positive rate for each real world COVID-19 primer set. If a sample has reads above this false positive rate at multiple loci we would consider a sample positive for COVID-19
