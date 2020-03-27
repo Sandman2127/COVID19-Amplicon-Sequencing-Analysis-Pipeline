@@ -1,11 +1,15 @@
 # General
-<p>This pipeline was written in response to the pandemic outbreak of the novel coronavirus known as COVID-19. The inabilty to test citizens at the rate required to stop or even slow the spread of this virus is alarming and my idea to improve testing speed is simple. Use amplicon sequencing and combine it with liquid handling robots to massively parallelize sample processing...</p>
+<p>This pipeline was written in response to the pandemic outbreak of the novel coronavirus known as COVID-19. The inability to test citizens at the rate required to stop or even slow the spread of this virus is very alarming to both scientists and citizens. The idea behind this pipeline is to improve the testing speed via the use of liquid handling robots combined with amplicon sequencing to massively parallelize sample processing...</p>
 
 #### Basic COVID-19 testing facts:
-<p>Currently COVID-19 testing can be done via a variety of molecular methods including: immunofluorescence microscopy, RT-PCR followed by standard PCR and gel electrophoresis, western blots for viral protein and CT scans of infected lung tissue. From a molecular diagnostic prespective the RT-PCR method is the most accurate and quick to perform. COVID-19 is an RNA virus, and as such its detection requires reverse transcription of the RNA into DNA before PCR or subsequent sequencing.</p>
+<p>Currently, COVID-19 testing is conducted through a variety of molecular methods, including RT-qPCR, RT-PCR followed by standard PCR and gel electrophoresis, immunofluorescence microscopy, immunoblotting for viral protein, and CT scans of infected lung tissue. COVID-19 is an +ssRNA virus, therefore analysis of its genetic material requires reverse-transcription of the RNA --> complementary DNA (cDNA). From a molecular diagnostic prospective, the RT-qPCR is the most definitively accurate and quick method to perform. RT-qPCR is simply reverse transcription of the RNA into cDNA followed by standard PCR amplification of the cDNA products at a specific known viral genome location.
+</p>
 
-#### Background ideas:
-<p>This pipeline was designed to take the RT-PCR method a step further and analyze sequencing data of the viral cDNA. I realized that using even the least capable next generation sequencer available (like an Illumina MiSeq, 15Gb w/25x10^6 reads) could not only drastically increase testing capacity for simple +/- diagnosis, but we may be also be able to learn about the COVID-19 virus as it spreads and evolves by sequencing, instead of just performing electorphoresis. To do this we need to perform parallelized sequencing of multiple viral cDNAs in many patients simultaneously.</p>
+#### Ideas behind amplicon sequencing in COVID-19:
+<p>Amplicon sequencing is simply target enriched sequencing. Instead of amplifying and quantifying one viral target in one patient per well (RT-qPCR), we would reverse transcribe and amplify multiple viral genome targets in each patient sample. Then, the samples will be combined into the same sample tube by patient and amplicon library assembly is performed using specific barcodes for each patient sample. To make the process safe and fast, we would need automated liquid handling robots to perform the heavy lifting/pipetting. After sequencing, we can demultiplex those sample reads to each individual, align them to the viral genome, and perform standard +/- virus analysis in addition to SNP calling and a myriad of other analyses.</p>  
+
+#### Why amplicon sequencing instead of RT-qPCR:
+I realized that using even the least capable next-generation sequencer  available (like an Illumina MiSeq, 15Gb w/25x10<sup>6</sup> reads) could not only drastically increase testing capacity for simple +/- diagnosis, but also increase its accuracy by using multiple viral amplicons. In addition, we may be to learn about the COVID-19 virus as it spreads and evolves via SNP analysis of our amplicons, instead of just getting +/- answers. To do this, we need to perform parallelized sequencing of multiple viral cDNAs in many patients simultaneously.</p>
 <p>This pipeline will:</p>
 <ul>
 <li> Automatically demultiplex patient amplicon sequencing data </li>
@@ -26,7 +30,7 @@
 </ol>
 
 ### Reproducible & Scalable Analysis:
-<p>The relatively simple operations of this pipeline are written in the <a href="https://www.nextflow.io">nextflow</a> pipeline development software to be run in a pre-built singularity container which is also freely available <a>here</a>. To further facilitate analysis in areas without strong computational infrastructure I've developed a publicly available AWS image (AMI ID: ami-0681e8be831a1a855, AMI Name: COVID19 Targeted Sequencing Analysis Pipeline) which already has the necessary software to run the analysis built into the included singularity container.</p>
+<p>The relatively simple operations of this pipeline are written in the <a href="https://www.nextflow.io">nextflow</a> pipeline development software to be run in a pre-built singularity container which is also freely available <a>here</a>. To further facilitate analysis in areas without strong computational infrastructure, I've developed a publicly available AWS image (AMI ID: ami-0681e8be831a1a855, AMI Name: COVID19 Targeted Sequencing Analysis Pipeline) which already has the necessary software to run the analysis built into the included singularity container.</p>
 
 
 ### Pipeline Minimal Compute Requirements:
@@ -41,7 +45,7 @@
 <ol>
 <li>Run in the cloud with an <a href="https://aws.amazon.com/free/?trk=ps_a131L0000085EJuQAM&trkCampaign=acq_paid_search_brand&sc_channel=ps&sc_campaign=acquisition_US&sc_publisher=google&sc_category=core-main&sc_country=US&sc_geo=NAMER&sc_outcome=acq&sc_detail=amazon%20web%20services&sc_content=Brand_amazon_web_services_e&sc_segment=423740514695&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|AWS|Core|US|EN|Text&s_kwcid=AL!4422!3!423740514695!e!!g!!amazon%20web%20services&ef_id=Cj0KCQjwx7zzBRCcARIsABPRscODB5HYuzBwvlVnnA5ob9O5LMgOlsdQer9H-vadHQlijFuRmHFPYXUaAtysEALw_wcB:G:s&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc">Amazon Web Services</a> image</li>
 <li>Run using <a href="https://sylabs.io/docs/">Singularity</a> container environments</li>
-<li>Run after building the included <a href="https://docs.conda.io/en/latest/">conda</a> environment ./condaEnv/COVID19_Analysis_conda_environment.yml</li>
+<li>Run after building the included <a href="https://docs.conda.io/en/latest/">conda</a> environment ./condaEnv/create_env.sh</li>
 </ol>
 
 ### 1) Pipeline Minimal Software Requirements for running on AWS cloud resources:
@@ -58,7 +62,7 @@
 
 
 ### 3) Pipeline Minimal Software Requirements to build and run from a conda environment:
-<p>Install the following functional programs in your path</p>
+<p>Install the following functional programs in your $PATH:</p>
 <ul>
 <li><a href="https://www.nextflow.io">Nextflow</a> version: 20.01.0.5264</li>
 <li><a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">Bowtie2</a> version: 2.3.5.1</li>
@@ -91,7 +95,7 @@
 <p></p>
 
 #### FastQ input file:
-<p>Any standard fastq file coming from an Illumina MiSeq, HiSeq or NovaSeq should be able to run successfully in this setup</p>
+<p>Any standard fastq file coming from an Illumina MiSeq, HiSeq, or NovaSeq should be able to run successfully in this setup</p>
 
 ## Getting and running the test data
 <p>First retrieve this git repo:</p>
@@ -113,26 +117,30 @@
 
 ## Patient Data Outputs:
 
-### Read alignment by contig and bowtie2 mapping quality score (MAQ)
-<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_readMAQ.png"/>
-<p>The mapping quality of reads by contig can tell us how accurately our amplified viral sequences are matching the COVID-19 genome. The highest achievable MAQ in bowtie2 is 42. High numbers of mapping reads on multiple amplicons indicates a positive diagnosis for COVID-19, whereas low mapping at almost all will indicate a negative result (i.e. no COVID-19 detected). My simulated data maps almost perfectly to the viral genome. <strong>In real life</strong> we will need to empirically determine the false positive alignment rate of each primer set. However, assuming we can generate high specificity primers for multiple viral genome sites, we can likely drastically improve the sensitivity of COVID-19 detection.</p>
-<p></p>
-<p></p>
 
-### Histogram showing starting position of mapping reads by contig
-<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/resultImages/Amplicon_Pos.png"/>
-<p>Theoretically in an amplicon sequencing experiment one should see a tight distribution. Ideally a single large peak of read start mapping positions. This plot immediately tells the reviewer what site in the viral genome the reads are mapping to, and how many. With background knowledge of the expected primer anealing sites, expected read depth and false positive rate a knowledgable reviewer would instantly know if the alignments indicate a positive or negative COVID-19 result.</p>
+### Example Report Output:
+https://sandman2127.github.io/COVID19-Amplicon-Sequencing-Analysis-Pipeline/
+
+#### Main Diagnosis Result:
+<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/exampleImages/MAINSCREEN.png" alt="Main Diagnostic Screen">
+
+#### Read alignment quality:
+<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/exampleImages/MAQ.png" alt="COVID19 amplicon alignment alignment quality image">
+
+#### COVID19 amplicon alignment genome position:
+<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/exampleImages/POS.png" alt="COVID19 amplicon alignment genome position">
+
 
 ### Conclusions
-<p>Since I started with 25x10^6 simulated reads split across 5 amplicons in 96 separate samples we expect the following: (25x10^6/5)/96) == 52,631 reads per sample. Clearly the data above indicate perfect alignment of all reads in the sample. This will not be the case in real world samples, but I am confident we can determine a false positive rate for each real world COVID-19 primer set. If a sample has reads above this false positive rate at multiple loci we would consider a sample positive for COVID-19
+<p>Since I started with 25x10<sup>6</sup> simulated reads split across 5 amplicons in 96 separate samples, we expect the following: (25x10<sup>6</sup>/5)/96) == 52,631 reads per sample. Clearly the data above indicate perfect alignment of all reads in the sample. This will not be the case in real world samples, but I am confident we can determine a false positive rate for each real world COVID-19 primer set. If a sample has reads above this false positive rate at multiple loci we would consider a sample positive for COVID-19
 
 ## Performance:
-<p>On a prebuilt dataset with 25 million reads spread across 5 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of $0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
+<p>On a prebuilt dataset with 25x10<sup>6</sup> reads spread across 5 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of $0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
 
 ## How was the test data built:
 ##### Simulating COVID-19 amplicon sequencing
 
-<p>I used <a href="https://www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm"> ART</a> to simulate 4.166 Million reads of 150 bp in length using Miseq V3 error profiles over 5 randomly chosen COVID amplicons using the below commands.</p>
+<p>I used <a href="https://www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm"> ART</a> to simulate 4.16x10<sup>6</sup> reads of 150 bp in length using Miseq V3 error profiles over 5 randomly chosen COVID amplicons using the below commands.</p>
 
 ##### Commands for ART data simulation
 
