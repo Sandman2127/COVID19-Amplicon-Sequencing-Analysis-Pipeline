@@ -57,7 +57,11 @@ process plotSamOutput {
 
     
     """
-    python $reportScripts/analyzeSam.py -inputSam $sam 
+    # Analyse alignment of amplicon data within sam, produce analytic plots and make diagnosis
+    python $reportScripts/analyzeSam.py -inputSam $sam
+    
+    # Output build individual reports
+    python $reportScripts/buildIndivReport.py
     """
 
 }

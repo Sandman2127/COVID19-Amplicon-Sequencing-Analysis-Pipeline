@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>COVID-19 Diagnostic Result</title>
+		<title>COVID-19 Diagnostic Result for {_sample_name_}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -25,8 +25,8 @@
                     <div class="content">
                         <div class="inner">
                             <h1>COVID19 Sequencing Results </h1>
-                            <h3>Predicted Result</h3 >
-                            <h1><font color="red">+</font></h1>
+                            <h3>Predicted Result for {_sample_name_}</h3 >
+                            <h1><font color="red">{_predicted_result_}</font></h1>
                         </div>
                     </div>
                     <nav>
@@ -42,14 +42,14 @@
                     <!-- POS -->
                         <article id="POS">
                             <h2 class="major">Amplicon Sequence Alignment</h2>
-                            <span class="image main"><img src="images/Amplicon_Pos.png" alt="" /></span>
+                            <span class="image main"><img src="images/Amplicon_Pos_Hist.png" alt="" /></span>
                             <p>The image above indicates the start mapping position (1st bp mapped) of each amplicon mapped read included in the experiment. This plot immediately tells the reviewer what site in the viral genome the reads are mapping to, and how many. With background knowledge of the expected primer anealing sites, expected read depth and false positive rate a knowledgable reviewer should instantly know if the alignments indicate a positive or negative COVID-19 result.</p>
                         </article>
 
                     <!-- MAQ -->
                         <article id="MAQ">
                             <h2 class="major">Read Alignment Quantification</h2>
-                            <span class="image main"><img src="images/Amplicon_readMAQ.png" alt="" /></span>
+                            <span class="image main"><img src="images/Amplicon_Barplot.png" alt="" /></span>
                             <p>The mapping quality of reads by contig can tell us how accurately our amplified viral sequences are matching the COVID-19 genome. The highest achievable MAQ in <a href="http://bowtie-bio.sourceforge.net/bowtie2/index.shtml">Bowtie2</a> is 42. High numbers of mapping reads on multiple amplicons indicate a positive diagnosis for COVID-19, whereas low mapping at almost all will indicate a negative result (i.e. no COVID-19 detected).</p>
                         </article>
 
