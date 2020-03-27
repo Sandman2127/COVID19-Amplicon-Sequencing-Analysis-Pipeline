@@ -132,15 +132,15 @@ https://sandman2127.github.io/COVID19-Amplicon-Sequencing-Analysis-Pipeline/
 
 
 ### Conclusions
-<p>Since I started with 25x10<sup>6</sup> simulated reads split across 5 amplicons in 96 separate samples, we expect the following: (25x10^6/5)/96) == 52,631 reads per sample. Clearly the data above indicate perfect alignment of all reads in the sample. This will not be the case in real world samples, but I am confident we can determine a false positive rate for each real world COVID-19 primer set. If a sample has reads above this false positive rate at multiple loci we would consider a sample positive for COVID-19
+<p>Since I started with 25x10<sup>6</sup> simulated reads split across 5 amplicons in 96 separate samples, we expect the following: (25x10<sup>6</sup>/5)/96) == 52,631 reads per sample. Clearly the data above indicate perfect alignment of all reads in the sample. This will not be the case in real world samples, but I am confident we can determine a false positive rate for each real world COVID-19 primer set. If a sample has reads above this false positive rate at multiple loci we would consider a sample positive for COVID-19
 
 ## Performance:
-<p>On a prebuilt dataset with 25 million reads spread across 5 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of $0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
+<p>On a prebuilt dataset with 25x10<sup>6</sup> reads spread across 5 COVID19 amplicons from 96 samples with a 4 CPU 16 Gb (AWS m5a.xlarge) the analysis completes in 26 minutes @ a cost of $0.17/hr. I can easily see this scaling into 10s of thousands of samples processed per hour for less than $3 per hour.</p>
 
 ## How was the test data built:
 ##### Simulating COVID-19 amplicon sequencing
 
-<p>I used <a href="https://www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm"> ART</a> to simulate 4.166 Million reads of 150 bp in length using Miseq V3 error profiles over 5 randomly chosen COVID amplicons using the below commands.</p>
+<p>I used <a href="https://www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm"> ART</a> to simulate 4.16x10<sup>6</sup> reads of 150 bp in length using Miseq V3 error profiles over 5 randomly chosen COVID amplicons using the below commands.</p>
 
 ##### Commands for ART data simulation
 
