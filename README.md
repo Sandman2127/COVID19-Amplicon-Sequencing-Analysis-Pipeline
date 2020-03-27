@@ -116,8 +116,19 @@ I realized that using even the least capable next generation sequencer available
 
 ## Patient Data Outputs:
 
+
 ### Example Report Output:
 https://sandman2127.github.io/COVID19-Amplicon-Sequencing-Analysis-Pipeline/
+
+#### Main Diagnosis Result:
+<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/exampleImages/MAINSCREEN.png" alt="Main Diagnostic Screen">
+
+#### Read alignment quality:
+<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/exampleImages/MAQ.png" alt="COVID19 amplicon alignment alignment quality image">
+
+#### COVID19 amplicon alignment genome position:
+<img src="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/exampleImages/POS.png" alt="COVID19 amplicon alignment genome position">
+
 
 ### Conclusions
 <p>Since I started with 25x10^6 simulated reads split across 5 amplicons in 96 separate samples we expect the following: (25x10^6/5)/96) == 52,631 reads per sample. Clearly the data above indicate perfect alignment of all reads in the sample. This will not be the case in real world samples, but I am confident we can determine a false positive rate for each real world COVID-19 primer set. If a sample has reads above this false positive rate at multiple loci we would consider a sample positive for COVID-19
