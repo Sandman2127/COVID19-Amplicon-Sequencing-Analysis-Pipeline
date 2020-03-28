@@ -106,7 +106,7 @@ def predCovid19Status(threshold,bedFile):
         # increment total amplicons expected if total passing reads is greater than required_read threshold:
         if total_passing_reads > int(RequiredReads):
             amplicons_accepted = amplicons_accepted + 1
-
+    
     # make diagnosis: 
     if amplicons_accepted >= int(totalSites):
         diagnosis = "+"
@@ -115,23 +115,21 @@ def predCovid19Status(threshold,bedFile):
     
     # write simple CSV output file
     fout = open("sample_summary.txt","w+")
-    output = basename + "," + diagnosis
+    output = basename + "," + diagnosis + "," + "amplicons_accepted:" + str(amplicons_accepted) + "," + "amplicons_required:" + str(totalSites)
     for amp in amplicon_list:
         output = output + "," + amp
     fout.write(output)
     fout.close()
 
 def main():
-    print("Plotting alignment to all chromosomes x MAPQ")
+    print("Plotting alignment to all chromosomes x MAPQ...")
     plotBarByAmplicon()
-    print("Plotting alignment start position for all reads on each chromosome")
+    print("Plotting alignment start position for all reads on each chromosome...")
     plotHistByAmpliconPos()
-    print("Predicting COVID status:")
+    print("Predicting COVID status...")
     predCovid19Status(threshold,bedFile)
-
+    print("Analysis Complete")
 
 if __name__ == "__main__":
     print("Executing Main")
-    #main()
-    predCovid19Status(threshold,bedFile)
-    
+    main() 
