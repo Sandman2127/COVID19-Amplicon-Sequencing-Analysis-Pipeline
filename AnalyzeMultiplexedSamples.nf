@@ -8,9 +8,11 @@
 genome = file(params.genome)
 barcodes = file(params.barcodes)
 input_ch = Channel.fromPath(params.inputF)
+bed = file(params.bed)
 
 lib = "$baseDir/lib"
 reportScripts = "$lib/reportScripts"
+exampleBed = "$reportScripts/exampleData/test.bed"
 
 process demuxSamples {
     input:
@@ -57,7 +59,11 @@ process plotSamOutput {
 
     
     """
-    python $reportScripts/analyzeSam.py -inputSam $sam 
+    # Analyse alignment of amplicon data within sam, produce analytic plots and make diagnosis
+    python $reportScripts/analyzeSam.py -inputSam $sam -threshold '5,5000,10,30' -bed $bed
+    
+    # Output build individual reports
+    python $reportScripts/buildIndivReport.py
     """
 
 }
