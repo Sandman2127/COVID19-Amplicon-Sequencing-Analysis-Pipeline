@@ -2,13 +2,12 @@
 
 import os, sys, re, shutil
 import argparse
-parser = argparse.ArgumentParser(description='Build Individual Report for Each Patient')
-#parser.add_argument('-inputDir', type=str, help='The absolute path to the input directory', required=True)
-#parser.add_argument('-templateHtmlDir', type=str, help='The absolute path to the input directory', required=True)
+# parser = argparse.ArgumentParser(description='Build Individual Report for Each Patient')
+# parser.add_argument('-samOutSummary', type=str, help='The sample_summary.txt file from analyzeSam.py <sampleID>,<>', required=True)
 
-#args = parser.parse_args()
-#inputDir = args.inputDir
-#templateHtmlDir = args.templateHtmlDir
+# #args = parser.parse_args()
+# #inputDir = args.inputDir
+# #templateHtmlDir = args.templateHtmlDir
 cwd = os.getcwd()
 match = re.search(r'(.*/COVID19-Amplicon-Sequencing-Analysis-Pipeline/lib).*',str(os.path.dirname(__file__)))
 if match:
@@ -17,6 +16,28 @@ else:
     print("lib directory not found, use the full path to the buildIndivReport.py, exiting now")
     exit
 reportDir = lib + "/indiv_report"
+
+
+def replace_dict(template,dictA):  # pass it a dictionary with two prepped items it passes back replaced template
+    for key,value in dictA.items():
+        template=template.replace(key,str(value))
+    return template
+
+
+def parseSummaryFile():
+    sampSumfile=cwd + "/sample_summary.txt"
+    if os.path.isfile(sampSumfile):
+        with open(sampSumfile,'r+') as fileIn:
+            line = fileIn.read()
+            line = line.strip()
+            line = line.split(",")
+            SampleID,Diagnosis=str(line[0]),str(line[1])
+            listR = [SampleID,Diagnosis]
+            return listR 
+    else:
+        print("Sample summary file from analyzeSam.py doesnt exist the report will not include a diagnosis")
+        listE = [str(0),str(Unknown)]
+        return listE
 
 def main():
     #TODO: establish position on the OS
@@ -48,8 +69,31 @@ def main():
     else:
         print("The analysis images were not copied succesfully, the copy was unsuccessful, exiting now")
         exit
-    #TODO: fill in all individual information into the template result.html :
-    #{_predicted_result_} {_sample_name_}
+    #TODO: fill in all individual information into the template result.html:
+    parsedResults = parseSummaryFile()
+    sampID,diagnosis = parsedResults[0],parsedResults[1]
+    predictedDiagnosis={"{_predicted_result_}":diagnosis}
+    sampleID={"{_sample_name_}":sampID}
+
+    replacement_pairs=[predictedDiagnosis,sampleID]
+    
+    #TODO: readin template and replace template sections:
+    REPORT_TEMPLATE = Nreportdir + "/result.html" 
+    with open(REPORT_TEMPLATE,'r') as f:
+        template=f.read()
+        f.close()
+
+    for dict_pair in replacement_pairs:
+        template=replace_dict(template,dict_pair)
+
+    fout = open("result.html",'w+')
+    fout.write(template)
+    fout.close()
+
+    fout_loc = cwd + "/result.html"
+    if os.path.isfile(fout_loc):
+        os.remove(REPORT_TEMPLATE)
+        shutil.copy(fout_loc,REPORT_TEMPLATE)
 
 if __name__ == "__main__":
     main()
