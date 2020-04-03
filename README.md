@@ -97,6 +97,15 @@ I realized that using even the least capable next-generation sequencer  availabl
 #### FastQ input file:
 <p>Any standard fastq file coming from an Illumina MiSeq, HiSeq, or NovaSeq should be able to run successfully in this setup</p>
 
+#### Amplicon Sites Bedfile:
+<p>This bed file provides the analysis program analyzeSam.py with the expected sites in the COVID19 genome where your amplicons are. It is in very basic bed format as below:</p>
+<p>lcl|NC_045512.2_gene_1   3921    4071</p>
+<p>lcl|NC_045512.2_gene_10  421     571</p>
+<p>lcl|NC_045512.2_gene_3   281     431</p>
+<p>...</p>
+
+<p>If you intend to use the test dataset, you can find a test AmpliconSites.bed in the /lib/reportScripts/exampleBed/AmpliconSites.bed or you can download it from <a href="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/reportScripts/exampleData/test.bed">here</a>.</p>
+
 ## Getting and running the test data
 <p>First retrieve this git repo:</p>
 <p><code>git clone https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline.git</code></p>
@@ -110,10 +119,10 @@ I realized that using even the least capable next-generation sequencer  availabl
 ## Run Nextflow Pipeline Command:
 
 #### Via the prebuilt singularity Container
-<p><code>singularity run /path/to/COVID19_Analysis.sif nextflow run /path/to/AnalyzeMultiplexedSamples.nf --genome ./COVID-19/genome --barcodes ./COVID19_sample_barcode_file.txt --inputF ./COVID19_simulated_SE_reads.fastq</code></p>
+<p><code>singularity run /path/to/COVID19_Analysis.sif nextflow run /path/to/AnalyzeMultiplexedSamples.nf --genome ./COVID-19/genome --barcodes ./COVID19_sample_barcode_file.txt --bed /path/to/AmpliconSites.bed --inputF ./COVID19_simulated_SE_reads.fastq</code></p>
 
 #### Without singularity, assuming all required programs are in the $PATH
-<p><code>nextflow run /path/to/AnalyzeMultiplexedSamples.nf --genome ./COVID-19/genome --barcodes ./COVID19_sample_barcode_file.txt --inputF ./COVID19_simulated_SE_reads.fastq</code></p>
+<p><code>nextflow run /path/to/AnalyzeMultiplexedSamples.nf --genome ./COVID-19/genome --barcodes ./COVID19_sample_barcode_file.txt --bed /path/to/AmpliconSites.bed --inputF ./COVID19_simulated_SE_reads.fastq</code></p>
 
 ## Patient Data Outputs:
 
