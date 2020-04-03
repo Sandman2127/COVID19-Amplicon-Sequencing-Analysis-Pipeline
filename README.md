@@ -91,7 +91,6 @@ I realized that using even the least capable next-generation sequencer  availabl
 <p>Should be a tab delimited text file with the barcode in the first column and the sampleName.fq (.fq is required after sample name):</p>
 <p>CTCTCCAG <\t> RED_CLOUD_001.fq</p>
 <p>TAATTG <\t> RED_CLOUD_002.fq</p>
-<p>...</p>
 <p></p>
 
 #### FastQ input file:
@@ -99,12 +98,11 @@ I realized that using even the least capable next-generation sequencer  availabl
 
 #### Amplicon Sites Bedfile:
 <p>This bed file provides the analysis program analyzeSam.py with the expected sites in the COVID19 genome where your amplicons are. It is in very basic bed format as below:</p>
-<p>lcl|NC_045512.2_gene_1   3921    4071</p>
-<p>lcl|NC_045512.2_gene_10  421     571</p>
-<p>lcl|NC_045512.2_gene_3   281     431</p>
-<p>...</p>
-
-<p>If you intend to use the test dataset, you can find a test AmpliconSites.bed in the /lib/reportScripts/exampleBed/AmpliconSites.bed or you can download it from <a href="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/reportScripts/exampleData/test.bed">here</a>.</p>
+<p>lcl|NC_045512.2_gene_1 <\t> 3921 <\t> 4071</p>
+<p>lcl|NC_045512.2_gene_10 <\t> 421 <\t> 571</p>
+<p>lcl|NC_045512.2_gene_3 <\t> 281 <\t> 431</p>
+<p></p>
+<p>If you intend to use the test dataset, you can find a test AmpliconSites.bed in the /lib/reportScripts/exampleBed/AmpliconSites.bed or you can simply copy it from <a href="https://github.com/Sandman2127/COVID19-Amplicon-Sequencing-Analysis-Pipeline/blob/master/lib/reportScripts/exampleData/test.bed">here</a>.</p>
 
 ## Getting and running the test data
 <p>First retrieve this git repo:</p>
